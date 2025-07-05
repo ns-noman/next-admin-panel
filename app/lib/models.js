@@ -41,13 +41,13 @@ const userSchema = new mongoose.Schema({
     {timestamps: true,}
 );
 
+
 const productSchema = new mongoose.Schema({
-    username: {
+    title: {
         type: String,
         required: true,
-        unique: true,
     },
-    description: {
+    desc: {
         type: String,
         required: true,
     },
@@ -64,15 +64,9 @@ const productSchema = new mongoose.Schema({
     img: {
         type: String,
     },
-    color: {
-        type: String,
-    },
-    size: {
-        type: String,
-    },
     
 },
     {timestamps: true,}
 );
-export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
+export const User = mongoose.models.User || mongoose.model("User", userSchema);
