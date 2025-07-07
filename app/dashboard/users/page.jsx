@@ -1,4 +1,4 @@
-// import { deleteUser } from "@/app/lib/actions";
+import { deleteUser } from "@/app/lib/actions";
 import { fetchUsers } from "@/app/lib/data";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import Search from "@/app/ui/dashboard/search/search";
@@ -48,7 +48,7 @@ const UsersPage = async ({ searchParams }) => {
               <td>{user.email}</td>
               <td>{user.createdAt?.toString().slice(4, 16)}</td>
               <td>{user.isAdmin ? "Admin" : "Client"}</td>
-              <td>{user.isActive ? "active" : "inactive"}</td>
+              <td>{user.isActive ? "Active" : "Inactive"}</td>
               <td>
                 <div className={styles.buttons}>
                   <Link href={`/dashboard/users/${user.id}`}>
@@ -56,12 +56,10 @@ const UsersPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  {/* <form action={deleteUser}>
-                    <input type="hidden" name="id" value={(user.id)} />
-                    <button className={`${styles.button} ${styles.delete}`}>
-                      Delete
-                    </button>
-                  </form> */}
+                  <form action={deleteUser}>
+                    <input type="hidden" name='id' value={user.id}/>
+                    <button className={`${styles.button} ${styles.delete}`} >Delete</button>
+                  </form>
                 </div>
               </td>
             </tr>

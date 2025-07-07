@@ -14,6 +14,7 @@ import {
 } from "react-icons/md";
 import MenuLink from './menuLink/menuLink';
 import Image from 'next/image';
+import { auth } from '@/app/auth';
 
 
 const menuItems = [
@@ -80,7 +81,12 @@ const menuItems = [
 ];
 
 
-const Sidebar = () => {
+const Sidebar = async () => {
+  const session = await auth();
+  console.log(session);
+  
+
+
   return (
     <div className={styles.container}>
         <div className={styles.user}>
