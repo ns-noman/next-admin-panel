@@ -117,12 +117,12 @@ export const deleteUser = async (formData) => {
 export const authenticate = async (prevState, formData) => {
   try {
     const { username, password } = Object.fromEntries(formData);
-    await signIn("credentials", { username, password });
+    await signIn("credentials", { username, password ,redirect: false });
   } catch (err) {
     console.log(err);
     
-    // if (err.message.includes("CredentialsSignin")) {
-    //   return "Wrong Credentials";
-    // }
+    if (err.message.includes("CredentialsSignin")) {
+      return "Wrong Credentials";
+    }
   }
 };
